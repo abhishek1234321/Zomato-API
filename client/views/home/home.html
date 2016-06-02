@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="small-12 columns">
+    <div class="callout secondary">
+      <form ng-submit="vm.searchZomato()">
+        <div class="row"> 
+          <div class="small-4 columns">
+            <label>Select City
+              <select id="city" ng-options="city as city.name for city in vm.cities" ng-model="vm.currentCity"></select>
+            </label>
+          </div>
+
+          <div class="small-8 columns">
+            <label>Search Restaurant</label>
+            <div class="input-group">
+              <input class="input-group-field" type="text" ng-model="vm.search.term">
+              <div class="input-group-button">
+                <input type="submit" class="button" value="Submit">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <table ng-show="vm.search.showListing">
+      <thead>
+        <tr>
+          <th>Name of Restaurant</th>
+          <th>Locality</th>
+          <th>Cuisines</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="r in vm.restaurantList">
+          <td ng-bind="r.restaurant.name"></td>
+          <td ng-bind="r.restaurant.location.locality"></td>
+          <td ng-bind="r.restaurant.cuisines"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
